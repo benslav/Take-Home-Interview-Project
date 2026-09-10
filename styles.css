@@ -14,6 +14,18 @@ h1 {
   align-items: center;
 }
 
+.container {
+  padding: 50px 0;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
 /* =========================================================
    NAV BAR — animated starry-night background
    Matches the AniPulse badge palette: deep navy base (#0a0e1a)
@@ -177,7 +189,7 @@ NAVIGATION
   width: 80px;
   justify-self: start;
   align-self: start;
-  padding-top: 16px;
+  padding-top: 6px;
 }
 
 .nav__center {
@@ -237,4 +249,41 @@ NAVIGATION
   padding-right: 32px;
   font-size: 20px;
   color: #fff;
+}
+
+/*
+
+BROWSE
+
+*/
+
+#browse {
+  margin-bottom: 135px;
+}
+
+.anime__list {
+  max-height: 1000vh;
+  padding-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.anime {
+  border: #242424;
+  border-style: solid;
+  border-radius: 0.5rem;
+  width: 250px;
+  height: 445px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.anime__title,
+.anime__release--date,
+.anime__ep--length {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
 }
