@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AniPulse</title>
   <script src="index.js" defer></script>
+  <script src="https://kit.fontawesome.com/d1723ddee7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -88,14 +89,22 @@
       <div class="moon"></div>
       <div class="skyline"></div>
       <div class="nav__container">
-        <img src="./assets/anipulse-badge-logo.svg" alt="" class="logo">
+        <img src="./assets/anipulse-badge-name-only.svg" alt="" class="logo">
         <div class="nav__center">
           <h1 class="nav__title">Browse anime</h1>
           <textarea name="" id="search__bar" placeholder="Search anime..."></textarea>
         </div>
         <ul class="nav__links">
-          <a href="#" class="nav__link">Home</a>
-          <a href="#" class="nav__link">Find Anime</a>
+          <a href="#" class="
+          nav__link 
+          link__hover-effect 
+          link__hover-effect--white
+          ">Home</a>
+          <a href="#" class="
+          nav__link 
+          link__hover-effect 
+          link__hover-effect--white
+          ">Find Anime</a>
           <button class="btn">
             Contact
           </button>
@@ -107,6 +116,9 @@
     <section id="browse">
       <div class="container">
         <div class="row">
+          <div class="search">
+            <h2>Search results: </h2>
+          </div>
           <div class="anime__list">
             <div class="anime">
               <figure class="anime__img--wrapper">
@@ -125,5 +137,44 @@
       </div>
     </section>
   </main>
+  <footer>
+    <div class="container">
+      <div class="row footer__row">    
+        <a href="#" class="footer__anchor">
+          <figure class="footer__logo">
+            <img src="./assets/anipulse-badge-name-only.svg" class="footer__logo--img" alt="">
+          </figure>
+          <span class="footer__logo--popper">
+            Top
+            <i class="fa-solid fa-arrow-up"></i>
+          </span>
+        </a>
+        <div class="footer__social--list">
+          <a href="#" class="
+            footer__social--link 
+            link__hover-effect 
+            link__hover-effect--white
+          ">
+            Home
+          </a>
+          <a href="#" class="
+            footer__social--link 
+            link__hover-effect 
+            link__hover-effect--white
+         ">
+            Find Anime
+          </a>
+          <a href="#" class="
+            footer__social--link 
+            link__hover-effect 
+            link__hover-effect--white
+          ">
+            Contact
+          </a>
+        </div>
+        <div class="footer__copyright">Copyright © 2026 Benjamin Slaven</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

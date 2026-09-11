@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="neonGrad" x1="20" y1="20" x2="280" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="irisGrad" x1="120" y1="118" x2="180" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer badge disc -->
+  <circle cx="150" cy="150" r="130" fill="#0a0e1a" stroke="url(#neonGrad)" stroke-width="5"/>
+  <!-- inner radar ring -->
+  <circle cx="150" cy="150" r="111" fill="none" stroke="url(#neonGrad)" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- radar ticks -->
+  <g stroke="url(#neonGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.85">
+    <line x1="150.0" y1="39.0" x2="150.0" y2="28.0"/>
+    <line x1="94.5" y1="53.9" x2="89.0" y2="44.3"/>
+    <line x1="53.9" y1="94.5" x2="44.3" y2="89.0"/>
+    <line x1="39.0" y1="150.0" x2="28.0" y2="150.0"/>
+    <line x1="53.9" y1="205.5" x2="44.3" y2="211.0"/>
+    <line x1="94.5" y1="246.1" x2="89.0" y2="255.7"/>
+    <line x1="150.0" y1="261.0" x2="150.0" y2="272.0"/>
+    <line x1="205.5" y1="246.1" x2="211.0" y2="255.7"/>
+    <line x1="246.1" y1="205.5" x2="255.7" y2="211.0"/>
+    <line x1="261.0" y1="150.0" x2="272.0" y2="150.0"/>
+    <line x1="246.1" y1="94.5" x2="255.7" y2="89.0"/>
+    <line x1="205.5" y1="53.9" x2="211.0" y2="44.3"/>
+  </g>
+
+  <!-- anime eye mark, recentered in the badge now that no text sits below it -->
+  <g transform="translate(0,35)">
+    <path d="M75,120 Q150,68 233,96 Q158,142 75,120 Z" fill="#f8fafc" stroke="url(#neonGrad)" stroke-width="4.5" stroke-linejoin="round"/>
+    <g stroke="url(#neonGrad)" stroke-width="4" stroke-linecap="round" fill="none">
+      <line x1="233" y1="96" x2="248" y2="80"/>
+      <line x1="226" y1="92" x2="236" y2="74"/>
+    </g>
+    <circle cx="150" cy="113" r="30" fill="url(#irisGrad)"/>
+    <circle cx="150" cy="113" r="13" fill="#0a0e1a"/>
+    <circle cx="141" cy="103" r="5" fill="#ffffff"/>
+    <circle cx="160" cy="121" r="2.5" fill="#ffffff" opacity="0.8"/>
+    <path d="M146,107 L146,119 L157,113 Z" fill="#f8fafc"/>
+  </g>
+</svg>
