@@ -2,6 +2,7 @@ const animeListEl = document.querySelector(".anime__list");
 let allAnime = [];
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector(".search__btn");
+const searchData = document.querySelector(".search");
 
 async function renderAnime() {
   const animeList = await fetch(`https://api.jikan.moe/v4/top/anime`);
@@ -35,6 +36,8 @@ renderAnime();
 
 function handleSearch() {
   const query = searchInput.value.trim().toLowerCase();
+  console.log(query);
+  searchData.innerHTML = updateSearch(query);
   const filtered = allAnime.filter((anime) =>
     anime.title.toLowerCase().includes(query)
   );
@@ -48,3 +51,10 @@ searchInput.addEventListener("keydown", (e) => {
 });
 
 searchBtn.addEventListener("click", handleSearch);
+
+function updateSearch(search) {
+  return `
+  <div class="search">
+    <h2>Search results for <span class="purple">"${search}"</span> </h2>
+  </div>`;
+}
