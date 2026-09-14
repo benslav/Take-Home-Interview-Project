@@ -1,11 +1,18 @@
 const animeListEl = document.querySelector(".anime__list");
+let allAnime = [];
+const searchInput = document.querySelector("#search-input");
+const searchBtn = document.querySelector(".search__btn");
 
 async function renderAnime() {
   const animeList = await fetch(`https://api.jikan.moe/v4/top/anime`);
   const result = await animeList.json();
-  console.log(result);
 
-  animeListEl.innerHTML = result.data.map((anime) => animeHTML(anime)).join("");
+  allAnime = result.data;
+  displayAnime(allAnime);
+}
+
+function displayAnime(animeArray) {
+  animeListEl.innerHTML = animeArray.map((anime) => animeHTML(anime)).join("");
 }
 
 function animeHTML(anime) {
@@ -25,3 +32,19 @@ function animeHTML(anime) {
 }
 
 renderAnime();
+
+function handleSearch() {
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = allAnime.filter((anime) =>
+    anime.title.toLowerCase().includes(query)
+  );
+  displayAnime(filtered);
+}
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    handleSearch();
+  }
+});
+
+searchBtn.addEventListener("click", handleSearch);

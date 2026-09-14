@@ -92,7 +92,12 @@
         <img src="./assets/anipulse-badge-name-only.svg" alt="" class="logo">
         <div class="nav__center">
           <h1 class="nav__title">Browse anime</h1>
-          <textarea name="" id="search__bar" placeholder="Search anime..."></textarea>
+          <div class="search__wrapper">
+            <input id="search-input" type="text"  placeholder="Search anime...">
+            <button class="search__btn">
+              <i class="fa-solid  fa-magnifying-glass search__icon click"></i>
+            </button>
+          </div>
         </div>
         <ul class="nav__links">
           <a href="#" class="
@@ -105,7 +110,7 @@
           link__hover-effect 
           link__hover-effect--white
           ">Find Anime</a>
-          <button class="btn">
+          <button class="btn click">
             Contact
           </button>
         </ul>
