@@ -97,6 +97,13 @@
             <button class="search__btn">
               <i class="fa-solid  fa-magnifying-glass search__icon click"></i>
             </button>
+            <select id="sort-select">
+              <option value="none">Sort by...</option>
+              <option value="az">A to Z</option>
+              <option value="za">Z to A</option>
+              <option value="newest">Newest to Oldest</option>
+              <option value="oldest">Oldest to Newest</option>
+            </select>
           </div>
         </div>
         <ul class="nav__links">
@@ -124,20 +131,10 @@
           <div class="search">
             <h2>Search results: </h2>
           </div>
-          <div class="anime__list">
-            <div class="anime">
-              <figure class="anime__img--wrapper">
-                <img src="" alt="Anime cover" class="anime__img">
-              </figure>
-              <div class="anime__title">
-                placeholder title
-              </div>
-              <div class="anime__release--date">
-                placeholder release
-              </div>
-              <div class="anime__ep--length">placeholder length</div>
-            </div>
+          <div class="loading">
+            <i class="fa-solid fa-spinner loading__spinner fa-spin" id="spinner"></i>
           </div>
+          <div class="anime__list"></div>
         </div>
       </div>
     </section>

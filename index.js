@@ -3,13 +3,31 @@ let allAnime = [];
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector(".search__btn");
 const searchData = document.querySelector(".search");
+let currentSort = "none";
+const sortSelect = document.querySelector("#sort-select");
+let animeList;
+const spinnerEl = document.querySelector(".loading");
 
 async function renderAnime() {
-  const animeList = await fetch(`https://api.jikan.moe/v4/top/anime`);
-  const result = await animeList.json();
+  spinnerEl.classList.add("loading__wrapper");
+  try {
+    const [animeList] = await Promise.all([
+      fetch(`https://api.jikan.moe/v4/top/anime`),
+      delay(1000), // keep the spinner visible for at least 800ms
+    ]);
+    const result = await animeList.json();
+    allAnime = result.data;
+    displayAnime(allAnime);
+  } catch (error) {
+    console.error("Failed to fetch anime:", error);
+    animeListEl.innerHTML = `<p>Something went wrong loading anime. Please try again.</p>`;
+  } finally {
+    spinnerEl.classList.remove("loading__wrapper");
+  }
+}
 
-  allAnime = result.data;
-  displayAnime(allAnime);
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function displayAnime(animeArray) {
@@ -35,13 +53,7 @@ function animeHTML(anime) {
 renderAnime();
 
 function handleSearch() {
-  const query = searchInput.value.trim().toLowerCase();
-  console.log(query);
-  searchData.innerHTML = updateSearch(query);
-  const filtered = allAnime.filter((anime) =>
-    anime.title.toLowerCase().includes(query)
-  );
-  displayAnime(filtered);
+  updateDisplay();
 }
 
 searchInput.addEventListener("keydown", (e) => {
@@ -58,3 +70,35 @@ function updateSearch(search) {
     <h2>Search results for <span class="purple">"${search}"</span> </h2>
   </div>`;
 }
+
+function getAiredTime(anime) {
+  // some anime have no known air date — push those to the end instead of crashing the sort
+  return anime.aired?.from ? new Date(anime.aired.from).getTime() : 0;
+}
+
+function updateDisplay() {
+  const query = searchInput.value.trim().toLowerCase();
+  let list = allAnime.filter((anime) => anime.title.toLowerCase().includes(query));
+
+  switch (currentSort) {
+    case "az":
+      list = [...list].sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "za":
+      list = [...list].sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    case "newest":
+      list = [...list].sort((a, b) => getAiredTime(b) - getAiredTime(a));
+      break;
+    case "oldest":
+      list = [...list].sort((a, b) => getAiredTime(a) - getAiredTime(b));
+      break;
+  }
+
+  displayAnime(list);
+}
+
+sortSelect.addEventListener("change", (e) => {
+  currentSort = e.target.value;
+  updateDisplay();
+});

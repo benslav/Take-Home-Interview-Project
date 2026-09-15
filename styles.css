@@ -303,6 +303,24 @@ BROWSE
   margin-bottom: 135px;
 }
 
+.loading__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  font-size: 60px;
+  color: #7342d6;
+}
+
+.loading__spinner {
+  display: none !important;
+}
+
+.loading__wrapper .loading__spinner {
+  display: block !important;
+}
+
 .anime__list {
   max-height: 1000vh;
   padding-top: 64px;
