@@ -12,7 +12,7 @@ async function renderAnime() {
   spinnerEl.classList.add("loading__wrapper");
   try {
     const [animeList] = await Promise.all([
-      fetch(`https://api.jikan.moe/v4/top/anime`),
+      fetch(`https://api.jikan.moe/v4/anime`),
       delay(1000), // keep the spinner visible for at least 800ms
     ]);
     const result = await animeList.json();
@@ -79,6 +79,13 @@ function getAiredTime(anime) {
 function updateDisplay() {
   const query = searchInput.value.trim().toLowerCase();
   let list = allAnime.filter((anime) => anime.title.toLowerCase().includes(query));
+
+  searchData.innerHTML = query ? updateSearch(query) : `<h2>Search results: </h2>`;
+
+  if (list.length === 0) {
+    animeListEl.innerHTML = `<p>Could not find any matches related to your search.</p>`;
+    return;
+  }
 
   switch (currentSort) {
     case "az":
