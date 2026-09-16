@@ -93,10 +93,12 @@
         <div class="nav__center">
           <h1 class="nav__title">Browse anime</h1>
           <div class="search__wrapper">
-            <input id="search-input" type="text"  placeholder="Search anime...">
-            <button class="search__btn">
-              <i class="fa-solid  fa-magnifying-glass search__icon click"></i>
-            </button>
+            <div class="search__input-wrapper">            
+              <input id="search-input" type="text"  placeholder="Search anime...">
+              <button class="search__btn">
+                <i class="fa-solid  fa-magnifying-glass search__icon click"></i>
+              </button>
+            </div>
             <select id="sort-select">
               <option value="none">Sort by...</option>
               <option value="az">A to Z</option>
@@ -106,7 +108,7 @@
             </select>
           </div>
         </div>
-        <ul class="nav__links">
+        <ul class="nav__links" id="nav-links">
           <a href="#" class="
           nav__link 
           link__hover-effect 

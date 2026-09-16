@@ -65,7 +65,8 @@ h1 {
    ========================================================= */
 
 nav {
-  height: 250px;
+  min-height: 250px;
+  height: auto;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -237,9 +238,11 @@ NAVIGATION
 }
 
 #search-input {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 38px;
   padding: 8px 14px;
+  padding-right: 44px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.08);
@@ -249,19 +252,60 @@ NAVIGATION
   resize: none;
 }
 
+.search__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 #search-input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.search__input-wrapper {
+  position: relative;
+  flex: 1 1 auto;
+  max-width: 400px;
+}
+
 .search__btn {
-  transform: translateX(-35px);
-  background-color: transparent;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
   border: none;
 }
 
 .search__icon {
   color: #fff;
   transform: scale(1.3);
+}
+
+#sort-select {
+  height: 38px;
+  padding: 8px 32px 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'><path d='M5.25 7.5L10 12.25L14.75 7.5H5.25Z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+}
+
+#sort-select option {
+  background-color: #17123a;
+  color: #fff;
 }
 
 .btn {
@@ -291,6 +335,44 @@ NAVIGATION
   margin: 0 32px;
   font-size: 20px;
   color: #fff;
+}
+
+/* hamburger button — hidden on desktop */
+.nav__toggle {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 0;
+  padding-top: 16px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  z-index: 6;
+}
+
+.nav__toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.nav__toggle--open .nav__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__toggle--open .nav__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle--open .nav__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /*
@@ -324,18 +406,19 @@ BROWSE
 .anime__list {
   max-height: 1000vh;
   padding-top: 64px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  padding-top: 64px;
 }
 
 .anime {
   border: #242424;
   border-style: solid;
   border-radius: 0.5rem;
-  width: 250px;
-  height: 445px;
-  margin-bottom: 55px;
+  width: 100%;
+  height: auto;
+  min-height: 400px;
 }
 
 .anime__title,
@@ -351,11 +434,6 @@ BROWSE
 .anime__title {
   font-size: 18px;
   font-weight: 700;
-}
-
-.anime__img {
-  width: 245px;
-  height: 347px;
 }
 
 /*
@@ -412,4 +490,46 @@ footer {
 .footer__anchor:hover .footer__logo--popper {
   transform: translateX(60px);
   opacity: 1;
+}
+
+/*
+
+RESPONSIVENESS
+
+*/
+
+@media (max-width: 900px) {
+  .nav__links {
+    flex-direction: column;
+    height: 100%;
+    max-height: 150px;
+  }
+
+  .nav__link {
+    padding-bottom: 16px;
+  }
+
+  .nav__title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav__container {
+    padding: 0 16px;
+  }
+
+  #search-input {
+    max-width: 100%;
+  }
+
+  .anime__list {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__social--list {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 }
