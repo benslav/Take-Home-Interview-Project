@@ -517,6 +517,7 @@ RESPONSIVENESS
 @media (max-width: 600px) {
   .nav__container {
     padding: 0 16px;
+    min-height: 320px;
   }
 
   #search-input {
