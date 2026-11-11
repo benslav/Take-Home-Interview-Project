@@ -12,4 +12,6 @@ The React app is organized into `src/components`, `src/pages`, and `src/App.jsx`
 
 Use `npm run build` to create a production build.
 
+GitHub Pages is deployed from the `main` branch using the workflow in `.github/workflows/deploy.yml`. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The production app uses hash-based routes so movie detail URLs work when hosted on GitHub Pages.
+
 This client-side app exposes its API key in source and browser requests. Do not commit a real key to a public repository; use a server-side proxy if deploying publicly.

@@ -5,7 +5,7 @@ export default function Footer() {
     <div className="row footer__row">
       <a href="#" className="footer__anchor">
         <figure className="footer__logo">
-          <img src="/assets/cineradar-badge-icon-only.svg" className="footer__logo--img" alt="CineRadar" />
+          <img src={`${import.meta.env.BASE_URL}assets/cineradar-badge-icon-only.svg`} className="footer__logo--img" alt="CineRadar" />
         </figure>
         <span className="footer__logo--popper">
           Top <i className="fa-solid fa-arrow-up"></i>
